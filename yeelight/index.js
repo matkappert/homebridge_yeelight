@@ -149,7 +149,9 @@ YeePlatform.prototype = {
 	// updateReachability seems have bug, but remove the accessory will cause
 	// the name of the light gone, leave the user to decide...
 	if (1) {
-	    accessory.updateReachability(false);	    
+	    accessory.updateReachability(false);
+	    var lightbulbService = accessory.getService(Service.Lightbulb);
+        lightbulbService.setCharacteristic(Characteristic.On, false);	    	    
 	} else {
 	    this.api.unregisterPlatformAccessories("homebridge-yeelight", "yeelight", [accessory]);
 
@@ -193,6 +195,8 @@ YeePlatform.prototype = {
 
 	accessory.on('identify', function(paired, callback) {
             platform.log("identify ....");
+            dev.setBlink();
+            if (callback) callback();
 	});
 
 	this.yeeAccessories.push(accessory);

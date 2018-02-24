@@ -97,7 +97,7 @@ YeeDevice = function (did, loc, model, power, bri,
                 return;
             }
 
-	    console.log("send hb to: " + that.did);	
+	    // console.log("send hb to: " + that.did);	
 
             var req = {id:-1, method:'get_prop',
                        params:['power', 'bright', 'rgb']};
@@ -259,8 +259,8 @@ YeeDevice = function (did, loc, model, power, bri,
     }.bind(this);
 
     this.setBlink = function () {
-	var req = {id:1, method:'start_cf',
-		   params:[6,0,'500,2,4000,1,500,2,4000,50']};
+	var req = {id:1, method:'set_scene',
+		   params:['cf', 10, 0, '300,2,4000,1, 300,2,4000,100'};
     }.bind(this);
    
     this.setName = function (name) {
