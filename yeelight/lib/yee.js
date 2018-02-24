@@ -260,7 +260,7 @@ YeeDevice = function (did, loc, model, power, bri,
 
     this.setBlink = function () {
 	var req = {id:1, method:'set_scene',
-		   params:['cf', 10, 0, '300,2,4000,1, 300,2,4000,100'};
+		   params:['cf', 10, 0, '300,2,4000,1, 300,2,4000,100']};
     }.bind(this);
    
     this.setName = function (name) {
